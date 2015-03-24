@@ -11,5 +11,8 @@
   "hubot-shipit",
   "hubot-youtube",
   "hubot-sentimental",
-  "hubot-seen"
+  "hubot-seen",
+  "hubot-devops-reactions",
+  "hubot-9gag",
+  "hubot-reaction"
 ]
