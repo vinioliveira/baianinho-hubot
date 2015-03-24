@@ -10,5 +10,6 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-youtube",
-  "hubot-sentimental"
+  "hubot-sentimental",
+  "hubot-seen"
 ]
