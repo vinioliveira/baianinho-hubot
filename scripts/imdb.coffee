@@ -17,18 +17,18 @@
 module.exports = (robot) ->
   robot.respond /(imdb|movie)( me)? (.*)/i, (msg) ->
     query = msg.match[3]
-    msg.http("http://mymovieapi.com/")
+    msg.http("http://omdbapi.com/")
       .query({
-        limit: 1
-        type: 'json'
-        plot: 'simple'
-        q: query
+        t: query
       })
       .get() (err, res, body) ->
-        list = JSON.parse(body)
-        if movie = list[0]
-          msg.send "#{movie.poster.cover}#.png" if movie.poster
-          msg.send "#{movie.plot_simple}"
-          msg.send "#{movie.imdb_url}"
+        movie = JSON.parse(body)
+        if movie
+          text = "#{movie.Title} (#{movie.Year})\n"
+          text += "IMDB: #{movie.imdbRating} MS: #{movie.Metascore}\n"
+          text += "#{movie.Poster}\n" if movie.Poster
+          text += "#{movie.Plot}"
+          
+          msg.send text
         else
           msg.send "That's not a movie, yo."
